@@ -35,8 +35,49 @@ The Wiener-Khinchin theorem states that the power spectral density of a wide sen
 
 ## PROGRAM
 
+clc;
+clear all;
+
+// Time vector
+t = 0:0.01:2*%pi;
+
+// Input signal
+x = sin(2*t);
+
+// Plot original signal
+subplot(3,2,1);
+plot(x);
+title("Original Signal");
+
+// Autocorrelation
+au = xcorr(x, x);
+subplot(3,2,2);
+plot(au);
+title("Autocorrelation");
+
+// FFT of Autocorrelation (PSD using Wiener-Khinchin theorem)
+v = fft(au);
+subplot(3,2,3);
+plot(abs(v));
+title("FFT of Autocorrelation (PSD)");
+
+// FFT of original signal
+fw = fft(x);
+subplot(3,2,4);
+plot(fw);
+title("FFT of Signal");
+
+// Power Spectral Density (|X(f)|^2)
+fw2 = (abs(fw)).^2;
+subplot(3,2,5);
+plot(fw2);
+title("Power Spectral Density (|X(f)|^2)");
+
 ## OUTPUT
 
-## RESULT`
+<img width="610" height="460" alt="517299079-4c9511d2-2719-4587-8cbb-62df0d787112" src="https://github.com/user-attachments/assets/c169f770-d9f8-4908-91cd-7909e99f6a33" />
 
+## RESULT
+
+Thus the Autocorrelation and PSD are executed in Scilab and output is verified.
 
